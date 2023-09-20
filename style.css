@@ -1,0 +1,36 @@
+ *{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    
+ }
+
+ html,body {
+    height: 100%;
+    width: 100%;
+ }
+
+ #main {
+    margin-top:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+ }
+
+ #main button {
+   padding: 8px 16px;
+   border-radius: 16px;
+   background-color: #457b9d;
+   border:0;
+   color: #f1faee;
+   font-size: 15px;
+   font-weight: bold;
+   cursor: pointer;
+ }
+
+ #main button:hover {
+    opacity: 0.8;
+ }
+ 
+
