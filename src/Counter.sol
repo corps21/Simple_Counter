@@ -10,12 +10,7 @@ contract Counter {
         owner = msg.sender;
     }
 
-    modifier onlyOwner() {
-        require(msg.sender == owner,"Only Owner can call");
-        _;
-    }
-
-    function setNumber(uint256 newNumber) public onlyOwner {
+    function setNumber(uint256 newNumber) public {
         number = newNumber;
     }
 
