@@ -1,4 +1,4 @@
-import {ethers} from '.ethers.min.js';
+import {ethers} from './ethers.min.js';
 
 const Connectbutton = document.querySelector("#connectButton")
 const GetButton = document.querySelector("#getButton")
