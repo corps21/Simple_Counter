@@ -6,20 +6,17 @@ import {Counter} from "../src/Counter.sol";
 
 contract CounterTest is Test {
     Counter public counter;
-    address addOfOwner = makeAddr("owner");
     address addOfUser = makeAddr("user");
 
     function setUp() public {
-        vm.startPrank(addOfOwner);
         counter = new Counter();
         counter.setNumber(1);
-        vm.stopPrank();
     }
 
     function test_setNumber() external{
         uint256 numberToSet = 21;
 
-        vm.startPrank(addOfOwner);
+        vm.startPrank(addOfUser);
         counter.setNumber(numberToSet);
         vm.stopPrank();
 
@@ -29,11 +26,11 @@ contract CounterTest is Test {
     }
 
     function testfails_setNumber() external {
-        uint256 numberToSet = 21;
+        uint256 numberToSet = 115792089237316195423570985008687907853269984665640564039457584007913129639935;
 
         vm.startPrank(addOfUser);
         vm.expectRevert();
-        counter.setNumber(numberToSet);
+        counter.setNumber(numberToSet + 1);
         vm.stopPrank();
     }
 
@@ -64,9 +61,7 @@ contract CounterTest is Test {
 
     function testfails_increment() external {
         uint256 number = 115792089237316195423570985008687907853269984665640564039457584007913129639935; //maximum number uint256 can store
-        vm.startPrank(addOfOwner);
         counter.setNumber(number);
-        vm.stopPrank();
 
         vm.startPrank(addOfUser);
         vm.expectRevert();
@@ -76,9 +71,9 @@ contract CounterTest is Test {
 
      function testfails_decrement() external {
         uint256 number = 0; //minimum number uint256 can store
-        vm.startPrank(addOfOwner);
+ 
         counter.setNumber(number);
-        vm.stopPrank();
+
 
         vm.startPrank(addOfUser);
         vm.expectRevert();
