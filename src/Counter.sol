@@ -2,24 +2,22 @@
 pragma solidity ^0.8.13;
 
 contract Counter {
-    uint256 public number;
+    uint256 number;
 
-    address public owner;
-
-    constructor() {
-        owner = msg.sender;
-    }
-
-    function setNumber(uint256 newNumber) public {
+    function setNumber(uint256 newNumber) external {
         number = newNumber;
     }
 
-    function increment() public {
+    function increment() external {
         number++;
     }
 
-    function decrement() public {
+    function decrement() external {
         number--;
+    }
+
+    function getNumber() external view returns(uint256) {
+        return number;
     }
 
 }

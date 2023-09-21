@@ -17,11 +17,6 @@ const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 const contractAbi = [
   {
     "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
-    "inputs": [],
     "name": "decrement",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -29,14 +24,7 @@ const contractAbi = [
   },
   {
     "inputs": [],
-    "name": "increment",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "number",
+    "name": "getNumber",
     "outputs": [
       {
         "internalType": "uint256",
@@ -49,15 +37,9 @@ const contractAbi = [
   },
   {
     "inputs": [],
-    "name": "owner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
+    "name": "increment",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -89,7 +71,7 @@ async function connect() {
 async function getNumber() {
     await connect();
     const contract = new ethers.Contract(contractAddress,contractAbi,signer);
-    const number = await contract.number();
+    const number = await contract.getNumber();
     console.log(number);
 }
 

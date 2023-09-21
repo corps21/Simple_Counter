@@ -20,7 +20,7 @@ contract CounterTest is Test {
         counter.setNumber(numberToSet);
         vm.stopPrank();
 
-        uint256 result = counter.number();
+        uint256 result = counter.getNumber();
 
         assertEq(result, numberToSet);
     }
@@ -35,26 +35,26 @@ contract CounterTest is Test {
     }
 
     function test_increment() external {
-        uint256 beforetest = counter.number();
+        uint256 beforetest = counter.getNumber();
 
         vm.startPrank(addOfUser);
         counter.increment();
         vm.stopPrank();
 
-        uint256 afterTest = counter.number();
+        uint256 afterTest = counter.getNumber();
 
         assertEq(beforetest + 1, afterTest);
     }
 
     function test_decrement() external {
 
-        uint256 beforetest = counter.number();
+        uint256 beforetest = counter.getNumber();
 
         vm.startPrank(addOfUser);
         counter.decrement();
         vm.stopPrank();
 
-        uint256 afterTest = counter.number();
+        uint256 afterTest = counter.getNumber();
 
         assertEq(beforetest - 1, afterTest);
     }
